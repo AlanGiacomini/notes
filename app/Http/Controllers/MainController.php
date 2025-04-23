@@ -83,6 +83,10 @@ class MainController extends Controller
    public function editNote($id){
       $id = Operations::decryptValue($id);
 
+      if($id === null){
+         redirect()->route('home');
+      }
+
       //LOAD NOTE
       $note = Note::find($id);
 
@@ -119,9 +123,13 @@ class MainController extends Controller
 
       //decrypt note_id
       $id = Operations::decryptValue($request->note_id);
+      if($id === null){
+         redirect()->route('home');
+      }
 
       //load note
       $note = Note::find($id);
+      
 
       //update note
       $note->title = $request->text_title;
@@ -134,6 +142,9 @@ class MainController extends Controller
 
    public function removeNote($id){
       $id = Operations::decryptValue($id);
+      if($id === null){
+         redirect()->route('home');
+      }
 
       //load note
       $note = Note::find($id);
@@ -149,6 +160,9 @@ class MainController extends Controller
 
    public function deleteNote($id){
       $id = Operations::decryptValue($id);
+      if($id === null){
+         redirect()->route('home');
+      }
 
       //load note
       $note = Note::find($id);
@@ -162,6 +176,9 @@ class MainController extends Controller
 
       //3 - Soft delete note | property enabled in model
       $note->delete();
+
+      //4 - Hard delete note even with the soft delete property active
+      //$note->forceDelete();
 
        //REDIRECT TO HOME
        return redirect()->route('home');

@@ -13,7 +13,7 @@ class Operations{
         }
         //DECRYPT EXCEPTION PEGA O ERRO DO DECRIPTADOR 
         catch (DecryptException $e) {
-           return redirect()->route('home');
+           return null;
         }
         return $value;
      }

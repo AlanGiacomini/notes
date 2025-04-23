@@ -49,10 +49,10 @@
                     </div>
                 </form>
                 <x-confirmModal 
-                :title="'Confirme por favor'"
-                :message="'Quer mesmo alterar a nota?'"
-                :btnNo="'Cancelar'"
-                :btnYes="'Confirmar'"
+                :title="'Confirm your choice'"
+                :message="'Save the changes made?'"
+                :btnNo="'No'"
+                :btnYes="'Yes'"
                 :form="'formEditNote'"/>
             </div>
         </div>
